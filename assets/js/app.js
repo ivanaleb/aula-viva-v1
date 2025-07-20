@@ -233,13 +233,12 @@ function iniciarDesafio3() {
 // ----------------------------------- Envío automático al agente AI -----------------------------------
 async function enviarAnalisisAI() {
   try {
+    document.getElementById('spinner-carga').classList.remove('spinner-oculto'); // Mostrar spinner
+
     const jsonAnalisis = generarResumenParaAnalisis();
-    
     console.log('Enviando análisis al agente AI...');
 
-    let url_local = 'http://localhost:8000/execute-task';
     let url_produccion = 'https://io-intelligence-test-agent-v1-526512689908.southamerica-east1.run.app/execute-task';
-    
     const response = await fetch(url_produccion, {
       method: 'POST',
       headers: {
@@ -247,6 +246,9 @@ async function enviarAnalisisAI() {
       },
       body: JSON.stringify(jsonAnalisis)
     });
+
+    // Simular demora mínima de 2 segundos para UX
+    await new Promise(res => setTimeout(res, 2000));
 
     if (response.ok) {
       const resultado = await response.json();
@@ -263,8 +265,45 @@ async function enviarAnalisisAI() {
     estado.analisisAI = {
       error: 'Error de conexión: No se pudo conectar con el servicio de análisis'
     };
+  } finally {
+    document.getElementById('spinner-carga').classList.add('spinner-oculto'); // Ocultar spinner
   }
 }
+
+// async function enviarAnalisisAI() {
+//   try {
+//     const jsonAnalisis = generarResumenParaAnalisis();
+    
+//     console.log('Enviando análisis al agente AI...');
+
+//     let url_local = 'http://localhost:8000/execute-task';
+//     let url_produccion = 'https://io-intelligence-test-agent-v1-526512689908.southamerica-east1.run.app/execute-task';
+    
+//     const response = await fetch(url_produccion, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(jsonAnalisis)
+//     });
+
+//     if (response.ok) {
+//       const resultado = await response.json();
+//       estado.analisisAI = resultado;
+//       console.log('Respuesta del agente AI recibida y almacenada');
+//     } else {
+//       console.error('Error al enviar análisis:', response.status);
+//       estado.analisisAI = {
+//         error: `Error ${response.status}: No se pudo conectar con el agente AI`
+//       };
+//     }
+//   } catch (error) {
+//     console.error('Error de conexión:', error);
+//     estado.analisisAI = {
+//       error: 'Error de conexión: No se pudo conectar con el servicio de análisis'
+//     };
+//   }
+// }
 
 function finalizarDesafio3() {
   const bitacora = document.getElementById('bitacora-texto').value.trim();
