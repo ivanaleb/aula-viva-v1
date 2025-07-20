@@ -1,0 +1,1052 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 25%, #000511 50%, #0d1b2a  75%, #0a0a0a 100%);
+  background-attachment: fixed;
+  color: #fff;
+  text-align: center;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Efecto de estrellas de fondo */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.9), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: twinkle 10s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.8; }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* === TIPOGRAFÍAS === */
+h1, h2 {
+  font-family: 'Fredoka', cursive;
+  margin: 20px 0;
+  text-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+p, li, label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* === BOTONES === */
+button {
+  font-family: 'Space Grotesk', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  padding: 15px 35px;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 20px 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+/* === PANTALLAS === */
+.oculto {
+  display: none !important;
+}
+
+section {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* === PANTALLA INTRO === */
+#pantalla-intro {
+  background: radial-gradient(circle at center, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+  position: relative;
+}
+
+#pantalla-intro p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 30px auto;
+  color: #e0e0e0;
+}
+
+/* === PANTALLA ÍNDICE === */
+#pantalla-indice {
+  background: radial-gradient(circle at center, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+}
+
+#pantalla-indice ol {
+  list-style: none;
+  counter-reset: challenge-counter;
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+#pantalla-indice li {
+  counter-increment: challenge-counter;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 20px 30px;
+  margin: 15px 0;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+#pantalla-indice li::before {
+  content: counter(challenge-counter);
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+/* === DESAFÍO 1: COMETAS === */
+#pantalla-desafio1 {
+  background: radial-gradient(circle at center, rgba(244, 67, 54, 0.1) 0%, transparent 70%);
+}
+
+#consigna-container {
+  background: rgba(255, 204, 0, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 20px 40px;
+  margin: 20px 0;
+  border-radius: 25px;
+  border: 2px solid #ffcc00;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffcc00;
+  animation: pulso 2s infinite;
+  box-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
+}
+
+@keyframes pulso {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 204, 0, 0.3); }
+  50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(255, 204, 0, 0.6); }
+}
+
+#juego-cometas {
+  position: relative;
+  width: min(90%, 800px);
+  height: 350px;
+  background: radial-gradient(ellipse at center, #001122 0%, #000000 100%);
+  border: 3px solid #4a90e2;
+  border-radius: 20px;
+  margin: 30px auto;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 0 50px rgba(74, 144, 226, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cometa {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: mover 8s linear forwards;
+  box-shadow: 0 0 20px rgba(255,255,255,0.8);
+  transition: all 0.3s ease;
+}
+
+.cometa::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, currentColor);
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+.cometa:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 30px rgba(255,255,255,1);
+}
+
+@keyframes mover {
+  from { 
+    left: -60px; 
+    opacity: 1; 
+  }
+  to { 
+    left: 110%; 
+    opacity: 0.8; 
+  }
+}
+
+/* === RECIPIENTES === */
+#recipientes {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.recipiente {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.recipiente::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: all 0.3s ease;
+  transform: rotate(45deg);
+}
+
+.recipiente:hover {
+  transform: translateY(-5px);
+}
+
+.recipiente:hover::before {
+  top: -100%;
+  left: -100%;
+}
+
+.rojo { 
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+}
+
+.azul { 
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+}
+
+.verde { 
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+}
+
+.contador {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-top: 5px;
+}
+
+/* === DESAFÍO 2: ASOCIACIONES === */
+#pantalla-desafio2 {
+  background: radial-gradient(circle at center, rgba(156, 39, 176, 0.1) 0%, transparent 70%);
+}
+
+#zona-asociacion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin: 40px 0;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.imagenes, .frases {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.imagen-box {
+  border: 3px dashed rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  width: 100%;
+  min-height: 180px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagen-box:hover {
+  border-color: #4ecdc4;
+  background: rgba(78, 205, 196, 0.1);
+  transform: scale(1.02);
+}
+
+.imagen-box img {
+  max-width: 100%;
+  max-height: 140px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.frase {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  cursor: grab;
+  text-align: left;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.frase:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  border-color: #4ecdc4;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.frase:active {
+  cursor: grabbing;
+  transform: rotate(2deg) scale(1.02);
+}
+
+/* === DESAFÍO 3: BITÁCORA === */
+/* === DESAFÍO 3: BITÁCORA === */
+#pantalla-desafio3 {
+  background: radial-gradient(circle at center, rgba(255, 152, 0, 0.1) 0%, transparent 70%);
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.bitacora-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: nowrap; /* Cambiado para evitar que las imágenes bajen */
+}
+
+.astronauta-img {
+  width: 200px;
+  max-width: 100%;
+}
+
+#bitacora-container {
+  max-width: 600px;
+  flex: 1 1 500px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#bitacora-container label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #ffcc00;
+  text-align: center;
+}
+
+#bitacora-texto {
+  width: 100%;
+  height: 250px;
+  padding: 20px;
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+#bitacora-texto:focus {
+  outline: none;
+  border-color: #4ecdc4;
+  box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+}
+
+#bitacora-texto::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+#contador-caracteres {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#contador-caracteres.limite {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .bitacora-layout {
+    flex-wrap: wrap; /* En pantallas chicas permitimos que bajen */
+    justify-content: center;
+  }
+  
+  .astronauta-img {
+    width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  #bitacora-container {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+
+
+/* === PANTALLA FINAL === */
+#pantalla-final {
+  background: radial-gradient(circle at center, rgba(103, 58, 183, 0.1) 0%, transparent 70%);
+}
+
+#clave-secreta-container {
+  margin: 40px 0;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  max-width: 500px;
+}
+
+#clave-secreta-container label {
+  display: block;
+  margin-bottom: 20px;
+  color: #ffcc00;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+#clave-secreta {
+  padding: 15px 20px;
+  width: 250px;
+  margin-right: 15px;
+  background: rgba(42, 42, 42, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+#clave-secreta:focus {
+  outline: none;
+  border-color: #4ecdc4;
+  box-shadow: 0 0 15px rgba(78, 205, 196, 0.3);
+}
+
+#resultados-container {
+  margin-top: 30px;
+  padding: 30px;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 2px solid #4ecdc4;
+  box-shadow: 0 0 30px rgba(78, 205, 196, 0.2);
+}
+
+#resultados-json {
+  background: rgba(26, 26, 26, 0.9);
+  padding: 25px;
+  border-radius: 10px;
+  color: #00ff88;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  #zona-asociacion {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  #recipientes {
+    gap: 20px;
+  }
+  
+  .recipiente {
+    width: 100px;
+    height: 100px;
+    font-size: 0.9rem;
+  }
+  
+  #juego-cometas {
+    height: 250px;
+  }
+  
+  .cometa {
+    width: 40px;
+    height: 40px;
+  }
+  
+  #bitacora-container {
+    padding: 20px;
+    margin: 0 10px;
+  }
+  
+  #clave-secreta {
+    width: 200px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+  
+  #recipientes {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .frase {
+    font-size: 0.9rem;
+  }
+}
+
+/* ======================================= ASTRONAUTA inicio =================================== */
+/* Layout en dos columnas */
+.intro-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 40px;
+}
+
+/* Columna de texto */
+.intro-texto {
+  flex: 1 1 400px;
+  max-width: 600px;
+}
+
+/* Imagen del astronauta */
+.astronauta-container {
+  flex: 1 1 300px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.astronauta-imagen {
+  max-width: 300%;
+  height: auto;
+  animation: flotar 3s ease-in-out infinite;
+  filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.astronauta-imagen:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 15px 40px rgba(255, 255, 255, 0.4));
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .intro-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .astronauta-container {
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+/* ====================================== Astronauta en pantalla índice ====================================== */
+#pantalla-indice {
+  position: relative;
+}
+
+.astronauta-indice {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.astronauta-idea-img {
+  width: 250px;
+  height: auto;
+  animation: pensando 4s ease-in-out infinite;
+  filter: drop-shadow(0 5px 15px rgba(255, 193, 7, 0.3));
+  transition: all 0.3s ease;
+}
+
+.astronauta-idea-img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 8px 25px rgba(255, 193, 7, 0.6));
+}
+
+@keyframes pensando {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% { 
+    transform: translateY(-8px) rotate(-1deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .astronauta-indice {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .astronauta-idea-img {
+    width: 80px;
+  }
+}
+
+
+/* Layout principal del desafío 1 */
+.desafio1-layout {
+  display: flex;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 20px auto;
+  align-items: flex-start;
+}
+
+/* Caja de instrucciones */
+.instrucciones-box {
+  background: rgba(76, 175, 80, 0.15);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(76, 175, 80, 0.3);
+  border-radius: 20px;
+  padding: 25px;
+  width: 350px;
+  min-height: 500px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+}
+
+.instrucciones-box h3 {
+  font-family: 'Fredoka', cursive;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #4ecdc4;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.instrucciones-contenido p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: #e0e0e0;
+  text-align: left;
+}
+
+.numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: white;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+/* ======================================== Astronauta con cronómetro ====================================*/
+.astronauta-cronometro {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.astronauta-cronometro-img {
+  width: 150px;
+  height: auto;
+  animation: tickTock 2s ease-in-out infinite;
+  filter: drop-shadow(0 5px 15px rgba(74, 144, 226, 0.4));
+}
+
+@keyframes tickTock {
+  0%, 100% { 
+    transform: rotate(-3deg);
+  }
+  50% { 
+    transform: rotate(3deg);
+  }
+}
+
+/* Área de juego */
+.juego-area {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Ajuste del contenedor de consigna */
+#consigna-container {
+  background: rgba(78, 205, 196, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 15px 30px;
+  margin: 0 0 20px 0;
+  border-radius: 15px;
+  border: 2px solid #4ecdc4;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #4ecdc4;
+  animation: pulsoConsigna 2s infinite;
+  box-shadow: 0 0 25px rgba(78, 205, 196, 0.3);
+  text-align: center;
+}
+
+@keyframes pulsoConsigna {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 25px rgba(78, 205, 196, 0.3); 
+  }
+  50% { 
+    transform: scale(1.02); 
+    box-shadow: 0 0 35px rgba(78, 205, 196, 0.5); 
+  }
+}
+
+/* Ajustes del juego de cometas - MUCHO MÁS ANCHO */
+#juego-cometas {
+  margin: 20px 0;
+  height: 300px;
+  width: 100%; /* Cambiado de 500px a 100% para ocupar todo el ancho disponible */
+  max-width: 1200px; /* Ancho máximo para pantallas muy grandes */
+  min-width: 800px; /* Ancho mínimo para asegurar que sea ancho */
+}
+
+/* Ajustes de recipientes - MÁS ANCHOS */
+#recipientes {
+  justify-content: center;
+  margin: 20px 0;
+  width: 100%; /* Ocupar todo el ancho disponible */
+  max-width: 1200px; /* Ancho máximo para pantallas muy grandes */
+  min-width: 800px; /* Ancho mínimo para asegurar que sean anchos */
+}
+
+/* Opcional: Si quieres hacer los recipientes individuales más anchos */
+.recipiente {
+  min-width: 150px; /* Ancho mínimo de cada recipiente individual */
+  flex: 1; /* Para que se expandan proporcionalmente */
+  margin: 0 10px; /* Espaciado entre recipientes */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .desafio1-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .instrucciones-box {
+    width: 100%;
+    max-width: 600px;
+    min-height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .astronauta-cronometro {
+    position: static;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .astronauta-cronometro-img {
+    width: 60px;
+  }
+  
+  /* Ajustar anchos en tablets */
+  #juego-cometas {
+    min-width: 600px;
+    max-width: 900px;
+  }
+  
+  #recipientes {
+    min-width: 600px;
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  .instrucciones-box {
+    padding: 20px;
+  }
+  
+  .instrucciones-box h3 {
+    font-size: 1.5rem;
+  }
+  
+  .instrucciones-contenido p {
+    font-size: 0.9rem;
+  }
+  
+  .numero {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
+  
+  #consigna-container {
+    font-size: 1.1rem;
+    padding: 12px 20px;
+  }
+  
+  /* Ajustar anchos en móviles */
+  #juego-cometas {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  #recipientes {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .recipiente {
+    min-width: 100px; /* Recipientes más pequeños en móviles */
+    margin: 0 5px;
+  }
+}
+
+/* === DESAFÍO 2: ASOCIACIONES === */
+.astronauta-desafio2 {
+  position: relative;
+  height: 200px; /* o el tamaño que necesites */
+  padding: 2rem;
+}
+
+.astronauta-d2-img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 150px;
+}
+
+/* finalización de la pantalla */
+.final-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.final-header h2 {
+  font-size: 2.5rem;
+  color: #ffcc00;
+  text-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+  margin: 0;
+}
+
+.final-astronauta {
+  max-width: 250px;
+  height: auto;
+  animation: flotar 3s ease-in-out infinite;
+  filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.final-astronauta:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 15px 40px rgba(255, 255, 255, 0.4));
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .final-header {
+    flex-direction: column;
+  }
+
+  .final-astronauta {
+    max-width: 120px;
+    margin-top: 15px;
+  }
+}
+
+
+/* Contenedor fijo para la imagen en la esquina superior izquierda */
+.imagen-superior-izquierda {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* que esté encima de todo */
+  padding: 10px;
+}
+
+.imagen-superior-izquierda img {
+  max-width: 80px; /* tamaño de la imagen, ajusta a tu gusto */
+  height: auto;
+  display: block;
+}
+
+

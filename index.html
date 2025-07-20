@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explorá tu Galaxia Interior</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main id="app">
+
+    <div class="imagen-superior-izquierda">
+      <img src="assets/img/logo_circular.png" alt="Logo o astronauta">
+    </div>
+
+    <!-- Pantalla Intro -->
+     <section id="pantalla-intro">
+      <div class="intro-layout">
+        <div class="intro-texto">
+          <h1>Explorá tu Galaxia Interior</h1>
+          <p>¡Bienvenido, viajero estelar! Hoy vamos a explorar tu universo personal usando formas, colores y frases.</p>
+          <button id="btn-empezar">Comenzar</button>
+        </div>
+        <div class="astronauta-container">
+          <img src="assets/img/astronauta-portada-Photoroom.png" alt="Astronauta en cohete explorando el espacio" class="astronauta-imagen">
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- Pantalla Índice -->
+     <section id="pantalla-indice" class="oculto">
+      <h2>¿Qué haremos?</h2>
+      <ol>
+        <li>Desafío 1: Atrapar cometas</li>
+        <li>Desafío 2: Asociar frases</li>
+        <li>Desafío 3: Bitácora de viaje</li>
+      </ol>
+      <button id="btn-siguiente-indice">Ir al Desafío 1</button>
+      <!-- Astronauta con idea en la esquina inferior derecha -->
+      <div class="astronauta-indice">
+        <img src="assets/img/astronauta_explica_desafios.png" alt="Astronauta con idea" class="astronauta-idea-img">
+    </section>
+    
+
+    <!-- Desafío 1 -->
+     <section id="pantalla-desafio1" class="oculto">
+      <h2>Desafío 1: "Clasificación Estelar de Meteoritos"</h2>
+      <div class="desafio1-layout">
+        <!-- Caja de instrucciones a la izquierda -->
+        <div class="instrucciones-box">
+          <h3>Desafío 1</h3>
+          <div class="instrucciones-contenido">
+            <p><span class="numero">4</span> Arrastra los meteoritos hacia el fondo correcto, según la instrucción que aparece en la parte superior.</p>
+            <p><span class="numero">5</span> La consigna cambia cada 5 segundos. ¡Presta atención!</p>
+            <p>Recuerda que es por tiempo.</p>
+            <p><span class="numero">6</span> ¡Actúa rápido!</p>
+            <p><span class="numero">7</span> ¿Listo para despegar?</p>
+          </div>
+          <!-- Astronauta con cronómetro -->
+          <div class="astronauta-cronometro">
+            <img src="assets/img/astronauta_del_tiempo.png" alt="Astronauta con cronómetro" class="astronauta-cronometro-img">
+          </div>
+        </div>
+        <!-- Área de juego a la derecha -->
+        <div class="juego-area">
+          <div id="consigna-container">
+            <p id="consigna">Atrapa los rojos</p>
+          </div>
+          <div id="juego-cometas"></div>
+          <div id="recipientes">
+            <div class="recipiente rojo">Rojo <span class="contador">0</span></div>
+            <div class="recipiente azul">Azul <span class="contador">0</span></div>
+            <div class="recipiente verde">Verde <span class="contador">0</span></div>
+          </div>
+        </div>
+      </div>
+      <button id="btn-finalizar-d1" class="oculto">Ir al Desafío 2</button>
+    </section>
+    
+
+     <!-- Desafío 2 (placeholder) -->
+      <section id="pantalla-desafio2" class="oculto">
+      <h2>Desafío 2: Asociar frases a imágenes</h2>
+
+      <div id="zona-asociacion">
+          <div class="imagenes">
+          <div class="imagen-box" data-img="planeta_solo.jpg"><img src="assets/img/planeta_solo.jpg" alt="planeta_solo"></div>
+          <div class="imagen-box" data-img="nebulosa.jpg"><img src="assets/img/nebulosa.jpg" alt="nebulosa"></div>
+          <div class="imagen-box" data-img="tormenta_cosmica.jpg"><img src="assets/img/tormenta_cosmica.jpg" alt="tormenta_cosmica"></div>
+          </div>
+
+          <div class="frases">
+          <div class="frase" draggable="true" data-frase="frase1">"Tantos colores mezclados, no sé por dónde empezar a explorar, y entonces me pierdo un poco, y se me olvida lo que buscaba.."</div>
+          <div class="frase" draggable="true" data-frase="frase2">"Me siento identificado con este planeta, a veces me da miedo estar solo y que nadie me encuentre, es un pensamiento recurrente."</div>
+          <div class="frase" draggable="true" data-frase="frase3">"Qué locura, todo gira y se mueve muy rápido, y entonces no sé qué pasa, pero no me puedo concentrar en nada.."</div>
+          <!-- Astronauta con globo de diálogo -->
+          <div class="astronauta-desafio2">
+            <div class="globo-dialogo">
+              <p>¡Arrastra las frases dentro de las imágenes que mejor las representen!</p>
+              <img src="assets/img/astronauta_desafio_2.png" alt="Astronauta explicando" class="astronauta-d2-img">
+            </div>
+          </div>
+          </div>
+      </div>
+      <button id="btn-finalizar-d2" class="oculto">Ir al Desafío 3</button>
+      </section>
+    
+
+    <!-- Desafío 3 -->
+    <section id="pantalla-desafio3" class="oculto">
+      <h2>Desafío 3: Bitácora de Viaje</h2>
+      <p>Comparte tu experiencia como explorador estelar. ¿Qué te pareció esta misión?</p>
+
+      <div class="bitacora-layout">
+        <img src="assets/img/planeta_desafio_3.png" alt="Astronauta Izquierda" class="astronauta-img izquierda" />
+        
+        <div id="bitacora-container">
+          <label for="bitacora-texto">Escribe tu bitácora de viaje:</label>
+          <textarea id="bitacora-texto" placeholder="Describe tu experiencia explorando tu galaxia interior... ¿Qué descubriste? ¿Cómo te sentiste? ¿Qué fue lo más interesante?"></textarea>
+          <div id="contador-caracteres">
+            <span id="caracteres-actuales">0</span> / 500 caracteres
+          </div>
+        </div>
+
+        <img src="assets/img/astronauta_regsitro_bitacora_desafio_tres.jpg"Astronauta Derecha" class="astronauta-img derecha" />
+      </div>
+
+      <button id="btn-finalizar-d3" class="oculto">Finalizar Misión</button>
+    </section>
+
+
+    <!-- Pantalla Final -->
+     <section id="pantalla-final" class="oculto">
+        <div class="final-header">
+          <h2>¡Felicitaciones, explorador!</h2>
+          <img src="assets/img/astronauta_completa_mision.png" alt="Astronauta celebrando" class="final-astronauta">
+        </div>
+        <p>Completaste todos los desafíos de tu galaxia interior.</p>
+        <p>Tu viaje estelar ha sido registrado en los archivos de la misión.</p>
+        <div id="clave-secreta-container">
+          <label for="clave-secreta">Ingresa la clave secreta para ver los resultados:</label>
+          <input type="password" id="clave-secreta" placeholder="Clave secreta">
+          <button id="btn-mostrar-resultados">Ver Resultados</button>
+        </div>
+        <div id="resultados-container" class="oculto">
+          <h3>Resultados de tu Misión Estelar</h3>
+          <pre id="resultados-json"></pre>
+        </div>
+      </section>
+
+  </main>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
