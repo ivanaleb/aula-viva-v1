@@ -238,9 +238,9 @@ async function enviarAnalisisAI() {
     console.log('Enviando análisis al agente AI...');
 
     let url_local = 'http://localhost:8000/execute-task';
-    let url_produccion = 'https://io-intelligence-test-agent-v1.onrender.com/execute-task';
+    let url_produccion = 'https://io-intelligence-test-agent-v1-526512689908.southamerica-east1.run.app/execute-task';
     
-    const response = await fetch(url_local, {
+    const response = await fetch(url_produccion, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
